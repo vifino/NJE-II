@@ -10,27 +10,27 @@ CDEFS=-DUSG -DNBCONNECT -DNBSTREAM -DUSE_XMIT_QUEUE -DUNIX -DHAS_PUTENV \
 	-DVMNET_IP_PORT=175
 
 # Compiler options:
-CC=gcc
-CPP=gcc -E
-CFLAGS=-g $(CDEFS)
-RANLIB=ranlib
-INSTALL=install
+CC?=gcc
+CPP?=gcc -E
+CFLAGS?=-g $(CDEFS)
+RANLIB?=ranlib
+INSTALL?=install
 
 # Some systems require these:
 #LIBS=-lsocket -lnsl
 
 # chgrp group name:
-NJEGRP=nje
+NJEGRP?=nje
 # Name for the send program (sometimes send is already in use):
-SEND=tell
-PRINT=njeprint
+SEND?=tell
+PRINT?=njeprint
 
 # Install locations.
-PREFIXDIR=/usr/local/nje
-MANDIR=${PREFIXDIR}/man
-LIBDIR=${PREFIXDIR}/lib
-BINDIR=${PREFIXDIR}/bin
-ETCDIR=${PREFIXDIR}/etc
+PREFIX?=/usr/local/nje
+MANDIR?=${PREFIX}/man
+LIBDIR?=${PREFIX}/lib
+BINDIR?=${PREFIX}/bin
+ETCDIR?=${PREFIX}/etc
 
 SRC= bcb_crc.c bmail.c file_queue.c headers.c io.c main.c \
 	nmr.c protocol.c read_config.c recv_file.c send.c \
@@ -139,14 +139,14 @@ routeinstall: nje.route
 install:
 	@echo "Installing everything."
 	@echo "Must propably be root for this also."
-	-mkdir ${PREFIXDIR}
+	-mkdir ${PREFIX}
 	-mkdir ${BINDIR}
 	-mkdir ${BINDIR}
 	-mkdir ${MANDIR}
 	-mkdir ${ETCDIR}
 	-mkdir ${LIBDIR}
-	-mkdir -p ${PREFIXDIR}/var/spool/bitnet
-	-mkdir -p ${PREFIXDIR}/var/log
+	-mkdir -p ${PREFIX}/var/spool/bitnet
+	-mkdir -p ${PREFIX}/var/log
 	$(INSTALL) -s -m 755 njed ${BINDIR}/njed.x
 	mv ${BINDIR}/njed.x ${BINDIR}/njed
 	$(INSTALL) -s -m 755 bitsend ${BINDIR}
@@ -192,7 +192,7 @@ install:
 
 install_nouid:
 	@echo "Installing everything."
-	-mkdir ${PREFIXDIR}
+	-mkdir ${PREFIX}
 	-mkdir ${BINDIR}
 	-mkdir ${MANDIR}
 	-mkdir ${ETCDIR}
