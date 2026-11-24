@@ -12,7 +12,7 @@ CDEFS=-DUSG -DNBCONNECT -DNBSTREAM -DUSE_XMIT_QUEUE -DUNIX -DHAS_PUTENV \
 # Compiler options:
 CC?=gcc
 CPP?=gcc -E
-CFLAGS?=-g $(CDEFS)
+CFLAGS?=-g $(CDEFS) -Wall -Wextra
 RANLIB?=ranlib
 INSTALL?=install
 
@@ -139,12 +139,12 @@ routeinstall: nje.route
 install:
 	@echo "Installing everything."
 	@echo "Must propably be root for this also."
-	-mkdir ${PREFIX}
-	-mkdir ${BINDIR}
-	-mkdir ${BINDIR}
-	-mkdir ${MANDIR}
-	-mkdir ${ETCDIR}
-	-mkdir ${LIBDIR}
+	-mkdir -p ${PREFIX}
+	-mkdir -p ${BINDIR}
+	-mkdir -p ${BINDIR}
+	-mkdir -p ${MANDIR}
+	-mkdir -p ${ETCDIR}
+	-mkdir -p ${LIBDIR}
 	-mkdir -p ${PREFIX}/var/spool/bitnet
 	-mkdir -p ${PREFIX}/var/log
 	$(INSTALL) -s -m 755 njed ${BINDIR}/njed.x
@@ -192,11 +192,11 @@ install:
 
 install_nouid:
 	@echo "Installing everything."
-	-mkdir ${PREFIX}
-	-mkdir ${BINDIR}
-	-mkdir ${MANDIR}
-	-mkdir ${ETCDIR}
-	-mkdir ${LIBDIR}
+	-mkdir -p ${PREFIX}
+	-mkdir -p ${BINDIR}
+	-mkdir -p ${MANDIR}
+	-mkdir -p ${ETCDIR}
+	-mkdir -p ${LIBDIR}
 	cp njed ${BINDIR}/njed
 	cp bitsend ${BINDIR}
 	cp qrdr ${BINDIR}
