@@ -71,6 +71,7 @@ int index;
 u_int32 *timep;
 {
   eprintf(fmt,index);
+  // FIXME: Actually print the time instead of a placeholder.
   eprintf("<IBM TIME>\n");
 }
 
@@ -252,8 +253,8 @@ int len;
 	eprintf ("   7:1  MODIFIER = X'%02X'\n",NJT->MODIFIER);
 	eprintf ("   8:1  NJTGFLG1 = X'%02X'\n",NJT->NJTGFLG1);
 	eprintf ("   9:1  NJTGXCLS = A'%c'\n",EBCDIC_ASCII[NJT->NJTGXCLS]);
-	etprintf("  12:8  NJTGSTRT = ",NJT->NJTGSTRT);
-	etprintf("  20:8  NJTGSTOP = ",NJT->NJTGSTOP);
+	etprintf("  12:8  NJTGSTRT = ",0,NJT->NJTGSTRT);
+	etprintf("  20:8  NJTGSTOP = ",0,NJT->NJTGSTOP);
 	eprintf ("  28:4  NJTGACPU = D'%d'\n",ntohl(NJT->NJTGACPU));
 	eprintf ("  32:4  NJTGALIN = D'%d'\n",ntohl(NJT->NJTGALIN));
 	eprintf ("  36:4  NJTGCARD = D'%d'\n",ntohl(NJT->NJTGCARD));
