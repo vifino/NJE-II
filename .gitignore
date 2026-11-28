@@ -1,0 +1,23 @@
+# Editor garbage
+*~
+*.swp
+*.swo
+
+# Build artifacts
+*.o
+.old
+acctcat
+bitsend
+bmail
+clientlib.a
+mailify
+namesfilter
+njed
+njeroutes
+qrdr
+receive
+sendfile
+tell
+transfer
+ucp
+ygone
